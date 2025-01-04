@@ -1,0 +1,16 @@
+# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.csproj.user
+
+# Logs
+*.log
+
+# Playwright files
+playwright.lock
+
+.vs/
