@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Luma_UI_Automation.Pages
 {
-    internal class HomePage
+    public class HomePage
     {
     }
 }
