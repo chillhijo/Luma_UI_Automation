@@ -3,12 +3,10 @@ using NUnit.Framework;
 
 namespace Luma_UI_Automation.Base
 {
-    public class BasePage
+    public class BasePage(IPage page)
     {
-        protected IPage Page;
-        public BasePage(IPage page) {
-            Page = page;
-        }
+        protected IPage Page = page;
+
         public static async Task ClickOnElementAsync(ILocator element)
         {
             await element.ClickAsync();
@@ -23,6 +21,17 @@ namespace Luma_UI_Automation.Base
         public static async Task EnterTextAsync(ILocator element, string text)
         {
             await element.FillAsync(text);
+        }
+
+        public async Task GetAndAssertTextFromElementAsync(ILocator element, string text)
+        {
+            var ElementText = await element.TextContentAsync();
+            Assert.That(ElementText, Is.EqualTo(text));
+        }
+
+        public async Task WaitForElementAsync(ILocator element, int timeout = 10000)
+        {
+            await element.WaitForAsync(new LocatorWaitForOptions { Timeout = timeout });
         }
     }
 }
