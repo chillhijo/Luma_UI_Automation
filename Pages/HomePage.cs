@@ -10,7 +10,7 @@ namespace Luma_UI_Automation.Pages
 {
     public class HomePage(IPage page) : BasePage(page)
     {
-        protected ILocator HomePageTitle => Page.Locator(".base");
+        protected ILocator HomePageTitle => Page.Locator("//span[@class='base']");
         protected ILocator NavigationBar => Page.Locator(".navigation");
         protected ILocator NavigationBarUl => Page.GetByRole(AriaRole.Menu);
         protected ILocator WhatsNewNavBar => Page.GetByRole(AriaRole.Presentation).GetByText("What`s New");
@@ -20,12 +20,17 @@ namespace Luma_UI_Automation.Pages
         protected ILocator TrainingMenu => Page.GetByRole(AriaRole.Presentation).GetByText($"Training");
         protected ILocator SaleMenu => Page.GetByRole(AriaRole.Presentation).GetByText($"Sale");
 
-        public async Task VerifyHomePageTitle() {
+        public async Task VerifyHomePageTitleAsync() {
+            await Page.WaitForLoadStateAsync(LoadState.NetworkIdle);
             await WaitForElementAsync(HomePageTitle);
+            Console.WriteLine("Home page input title: " + HomePageTitle.InputValueAsync());
+            Console.WriteLine("Homepage title: " + HomePageTitle.TextContentAsync());
+            await IsVisibleAsync(HomePageTitle);
+            Console.WriteLine("Homepage is visible");
             await GetAndAssertTextFromElementAsync(HomePageTitle, "Home Page");
         }
 
-        public async Task VerifyNavigationBarMenu() {
+        public async Task VerifyNavigationBarMenuAsync() {
             await IsVisibleAsync(WhatsNewNavBar);
             await IsVisibleAsync(WomenMenu);
             await IsVisibleAsync(MenMenu);

@@ -15,10 +15,14 @@ namespace Luma_UI_Automation.Pages
         protected ILocator PasswordInputField => Page.GetByTitle("Password");
         protected ILocator LoginButton => Page.GetByRole(AriaRole.Button, new() { Name = "Sign in" });
 
-        public async Task GoToLoginPageAsync() {
-            await Page.GotoAsync("https://magento.softwaretestingboard.com/customer/account/login");
+        public async Task GoToHomePageAsync() {
+            await Page.GotoAsync("https://magento.softwaretestingboard.com/");
             await Page.WaitForLoadStateAsync(LoadState.Load);
             Console.WriteLine("Login page is open!");
+        }
+
+        public async Task GoToLoginPageAsync() {
+            
         }
 
         public async Task EnterCredentialsAsync(string username, string password) {
