@@ -13,7 +13,7 @@ namespace Luma_UI_Automation.Pages
         protected ILocator CustomerLoginTitle => Page.Locator(".base");
         protected ILocator EmailInputField => Page.GetByTitle("Email");
         protected ILocator PasswordInputField => Page.GetByTitle("Password");
-        protected ILocator LoginButton => Page.GetByText("Sign In");
+        protected ILocator LoginButton => Page.GetByRole(AriaRole.Button, new() { Name = "Sign in" });
 
         public async Task GoToLoginPageAsync() {
             await Page.GotoAsync("https://magento.softwaretestingboard.com/customer/account/login");
