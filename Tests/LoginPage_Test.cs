@@ -8,9 +8,11 @@ namespace Luma_UI_Automation.Tests
     {
         [Test]
         public async Task ValidCredentialsLoginAsync() {
-            await _loginPage.GoToLoginPageAsync();
-            await _loginPage.EnterCredentialsAsync("pralicadusko93@gmail.com", "Samorejv1312!");
+            await _loginPage.GoToHomePageAsync();
+            await _loginPage.EnterCredentialsAsync("brobro@gmail.com", "Pass123!");
             await _loginPage.ClickOnLoginButtonAsync();
+            await _homePage.VerifyHomePageTitleAsync();
+            await _homePage.VerifyNavigationBarMenuAsync();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Luma_UI_Automation.Base
         protected IBrowser _browser;
         protected IPage _page;
         protected LoginPage _loginPage;
+        protected HomePage _homePage;
         
                 
         [SetUp]
@@ -22,6 +23,7 @@ namespace Luma_UI_Automation.Base
             _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions {Headless = false});
             _page = await _browser.NewPageAsync();
             _loginPage = new LoginPage(_page);
+            _homePage = new HomePage(_page);
             }
             catch (Exception ex) {
                 Console.WriteLine($"Error during setup: {ex.Message}");
