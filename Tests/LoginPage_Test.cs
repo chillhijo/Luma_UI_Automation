@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Luma_UI_Automation.Base;
-using Luma_UI_Automation.Pages;
-using Microsoft.Playwright;
+﻿using Luma_UI_Automation.Base;
 using NUnit.Framework;
 
 namespace Luma_UI_Automation.Tests
